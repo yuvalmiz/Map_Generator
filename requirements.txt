@@ -1,0 +1,10 @@
+#Install necessary libraries
+diffusers
+transformers
+accelerate
+huggingface_hub
+torch
+torchvision
+cairosvg
+datasets
+bitsandbytes
