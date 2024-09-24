@@ -1,14 +1,14 @@
-#MAP GENERATOR
-##Overview
+# MAP GENERATOR
+## Overview
 This repository contains a collection of scripts that work together to provide a comprehensive solution for collecting data from wikimedia, generating images, fine-tuning diffusion models, managing images and metadata. The project is fully deployable in Google Colab for ease of use, but it can also be run locally.
 
-##Key Features:
+## Key Features:
 -Image generation from trained and pretrained models.
 -Fine-tuning of diffusion model with checkpoints and using various VAE's.
 -data collection and Metadata menagment.
 -Various utilities for filtering, dataset preparation, and prompt management.
 -Integration with Wikipedia for data extraction.
-##Installation
+## Installation
 To get started, you need to install the required dependencies. You can do this using pip:
 
 ```
@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ```
 Make sure that you have Python 3.8+ installed.
 
-##Files and Their Purpose
+## Files and Their Purpose
 Each file in the repository serves a distinct purpose. Here's an overview of the key scripts:
 
 -api.py: Defines API calls for interacting with the model.
@@ -37,7 +37,7 @@ Each file in the repository serves a distinct purpose. Here's an overview of the
 -svg_to_png.py: Converts SVG files to PNG format.
 -vae_finetune.py: Fine-tunes a VAE (Variational AutoEncoder) model.
 -wikipedia_reading_maps.py: Extracts and processes data from Wikipedia, mapping it to relevant use cases.
-##How to Use
+## How to Use
 You can run each of the scripts locally or in Google Colab.
 
 Running Locally
@@ -55,14 +55,14 @@ pip install -r requirements.txt
 Run individual scripts
 
 
-##Google Colab Implementation
+## Google Colab Implementation
 
 This Colab notebook allows you to run everything in sequence without needing a local setup. Simply open the notebook and follow the instructions provided.
 
 Project Workflow
 The general workflow is as follows:
 
-##Dataset Preparation:
+## Dataset Preparation:
 
 -use wikipedia_reading_maps.py to collect specific category images from wikimedia (change the category inside)
 -use svg_to_png.py to convert svg files to png
@@ -70,7 +70,7 @@ The general workflow is as follows:
 -use llama_prompts.py to generate prompt for the data
 -use preparing_dataset.py to preper dataset from dowloaded images. the dataset.
 
-##Model Fine-tuning:
+## Model Fine-tuning:
 
 Fine-tune the model using finetune_script.sh or finetune_checkpint_script.sh if resuming from a checkpoint.
 
@@ -79,9 +79,9 @@ for using checkpoint
 finetune_checkpint_script.sh {checkpoint-number}
 ```
 
-Image Generation:
+## Image Generation:
 
 Generate images with generate_image.py or generate_images_from_trained_and_pretrained.py.
-Evaluation:
+## Evaluation:
 
 Calculate FID scores using fid_calculation.py.
