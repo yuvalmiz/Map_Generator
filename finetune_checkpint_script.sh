@@ -7,7 +7,7 @@ export train_steps=1000
 
 # Use $1 as the first argument for the checkpoint (optional)
 CHECKPOINT_PATH=$1
-
+VAE_PATH=$2
 # Construct the base command
 CMD="accelerate launch diffusers/examples/text_to_image/train_text_to_image.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
@@ -35,5 +35,8 @@ else
   CMD="$CMD --max_train_steps=$train_steps"
 fi
 
+if [ -n "$VAE_PATH" ]; then
+  CMD="$CMD --vae_model_name_or_path=$VAE_PATH"
+fi
 # Execute the command
 eval $CMD
