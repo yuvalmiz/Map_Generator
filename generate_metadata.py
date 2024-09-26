@@ -3,9 +3,9 @@ from api import read_csv_to_list
 import json
 from tqdm import tqdm
 
-train_dir = "./stableDiffusion/dataset2"  # This should match the environment variable you will use in the bash script
-metadata_filename = os.path.join("./", "metadata.jsonl")
-image_prompt = read_csv_to_list("./image_prompt_shorter.csv",["image", "prompt"])
+train_dir = "dataset"  # This should match the environment variable you will use in the bash script
+metadata_filename = os.path.join(train_dir, "metadata.jsonl")
+image_prompt = read_csv_to_list("./image_prompt.csv",["image", "prompt"])
 image_prompt_dict = {}
 
 
