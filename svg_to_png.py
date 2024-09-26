@@ -2,7 +2,7 @@ import json
 import cairosvg
 import os
 from tqdm import tqdm
-images_directory = "./gdrive/deeplearning final project/downloaded_maps3/"
+images_directory = "downloaded_maps_final/"
 # images_directory = "./test/"
 with open(f'{images_directory}image_descriptions.json', 'r') as file:
     url_discription_dict = json.load(file)
