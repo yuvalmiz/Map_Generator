@@ -1,15 +1,15 @@
 #!/bin/bash
 
 export MODEL_NAME=CompVis/stable-diffusion-v1-4
-export TRAIN_DIR=stableDiffusion/dataset2
-export OUTPUT_DIR=stableDiffusion/output_model_full_shorter_prompts
+export TRAIN_DIR=dataset2
+export OUTPUT_DIR=output_model_full_shorter_prompts_VAE_drive
 export train_steps=1000
 
 # Use $1 as the first argument for the checkpoint (optional)
 CHECKPOINT_PATH=$1
 VAE_PATH=$2
 # Construct the base command
-CMD="accelerate launch diffusers/examples/text_to_image/train_text_to_image.py \
+CMD="accelerate launch train_text_to_image.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --train_data_dir=$TRAIN_DIR \
   --use_ema \
