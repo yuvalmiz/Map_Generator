@@ -5,9 +5,9 @@ from tqdm import tqdm
 from api import read_csv_to_list
 
 # Define paths
-train_dir = "./stableDiffusion/dataset2"  # This should match the environment variable you will use in the bash script
+train_dir = "dataset"  # This should match the environment variable you will use in the bash script
 os.makedirs(train_dir, exist_ok=True)
-image_folder = "./gdrive/deeplearning final project/downloaded_maps3"
+image_folder = "downloaded_maps_final"
 # image_prompt_list_path = "image_prompt_list.csv"
 image_prompt_list_path = "image_prompt.csv"
 finished_images_prompt_list_path = "finished_images_prompt_list.json"
