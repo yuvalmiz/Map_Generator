@@ -103,11 +103,11 @@ category = 'Category:Maps by area'
 url_discription_dict = {}
 finished_categories = []
 # Create a directory to store the images
-if not os.path.exists('downloaded_maps3'):
-    os.makedirs('downloaded_maps3')
+if not os.path.exists('downloaded_maps_final'):
+    os.makedirs('downloaded_maps_final')
 
 # Change the current working directory to the download folder
-os.chdir('downloaded_maps3')
+os.chdir('downloaded_maps_final')
 
 
 if os.path.exists('finished_categories.json'):
