@@ -8,8 +8,8 @@ from torchvision.models import inception_v3
 from tqdm import tqdm
 
 # Paths
-pretrained_dir = 'stableDiffusion/generated_data_longerModel'
-real_images_dir = 'gdrive/deeplearning final project/downloaded_maps3'
+pretrained_dir = 'generated_data'
+real_images_dir = 'downloaded_maps_final'
 
 # Helper function to load images
 def load_images(image_dir, prefix, real_images_dir):
@@ -30,10 +30,12 @@ def load_images(image_dir, prefix, real_images_dir):
     return images, real_images
 
 # Load pretrained model images
-pretrained_images, pretrained_real_images = load_images(pretrained_dir, 'generated_pretrained_', real_images_dir)
+pretrained_images, _ = load_images(pretrained_dir, 'generated_pretrained_', real_images_dir, load_real=False)
 
 # Load trained model images
-trained_images, trained_real_images = load_images(pretrained_dir, 'generated_trained_', real_images_dir)
+trained_images, _ = load_images(pretrained_dir, 'generated_trained_', real_images_dir, load_real=False)
+
+trained_images_with_VAE, real_images = load_images(pretrained_dir, 'generated_trained_with_VAE_', real_images_dir, load_real=True)
 
 # Preprocess function for InceptionV3 model
 def preprocess(images):
@@ -114,8 +116,12 @@ inception_model = InceptionV3ForFID().to(device)
 # Compute FID for pretrained model
 fid_pretrained = compute_fid(pretrained_images, pretrained_real_images, inception_model, device)
 
-# Compute FID for trained model
-fid_trained = compute_fid(trained_images, trained_real_images, inception_model, device)
+# Compute FID for pretrained model
+fid_pretrained = compute_fid(pretrained_images, real_images, inception_model, device)
 
+# Compute FID for trained model
+fid_trained = compute_fid(trained_images, real_images, inception_model, device)
+fid_trained_with_VAE = compute_fid(trained_images_with_VAE,real_images, inception_model, device)
 print(f"FID for Pretrained Model: {fid_pretrained}")
 print(f"FID for Trained Model: {fid_trained}")
+print(f"FID for Trained Model with VAE: {fid_trained_with_VAE}")
