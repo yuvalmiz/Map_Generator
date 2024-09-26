@@ -10,14 +10,14 @@ from PIL import Image
 from tqdm import tqdm
 
 # Load the pre-trained Stable Diffusion model
-model_dir = './stableDiffusion/vaeFineTuned'
+model_dir = './vaeFineTuned'
 vae = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float16).vae
 device = torch.device("cuda")
 # Extract the VAE from the pipeline
 vae.to(device)
 
 # Load the metadata file and images
-train_dir = './stableDiffusion/dataset2'
+train_dir = './dataset'
 metadata_file = os.path.join(train_dir, 'metadata.jsonl')
 
 # Set up the dataset and transformation
@@ -74,8 +74,7 @@ train_dataset = ImageDatasetWithPrompts(train_dir, metadata_file, transform=tran
 train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
 
 # Define the optimizer
-# optimizer = AdamW(vae.parameters(), lr=1e-6, eps=1e-6)
-optimizer = torch.optim.SGD(vae.parameters(), lr=1e-3, momentum=0.9)
+optimizer = AdamW(vae.parameters(), lr=1e-5)
 
 # Training loop
 def train_vae(epochs, train_loader):
@@ -87,7 +86,6 @@ def train_vae(epochs, train_loader):
             # Forward pass through the VAE: encode images to latent space
             latents_dist = vae.encode(images)
             mu, logvar = latents_dist.latent_dist.mean, latents_dist.latent_dist.logvar
-
             # Sample from latent distribution
             latents = latents_dist.latent_dist.sample()
 
@@ -102,14 +100,12 @@ def train_vae(epochs, train_loader):
             # Backpropagation
             optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(vae.parameters(), max_norm=5)  # Adjust max_norm if needed
             optimizer.step()
             if step % 100 == 0:
                 print(f"Epoch [{epoch+1}/{epochs}], Step [{step}/{len(train_loader)}], Loss: {loss.item()}")
-                vae.save_pretrained(f"{model_dir}/vae_checkpoint_epoch_{epoch+1}")
-
 
         # Save checkpoint after each epoch
+        vae.save_pretrained(f"{model_dir}/vae_trained_epoch_{epoch}")
 # Run training
 epochs = 10
 train_vae(epochs, train_loader)
