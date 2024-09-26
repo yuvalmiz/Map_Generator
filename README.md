@@ -80,11 +80,11 @@ The general workflow is as follows:
 
 Fine-tune the model using finetune_script.sh or finetune_checkpint_script.sh if resuming from a checkpoint.
 
-for using checkpoint 
+for using checkpoint and trained VAE 
 ```
 finetune_checkpint_script.sh {checkpoint-number or ""} {trained_vae_path or keep blank}
 ```
-
+notice that you may need to enter the file and change the paths to the train directory and output directory
 ### Image Generation:
 
 Generate images with generate_image.py or generate_images_from_trained_and_pretrained.py.
