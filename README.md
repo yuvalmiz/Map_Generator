@@ -82,7 +82,7 @@ Fine-tune the model using finetune_script.sh or finetune_checkpint_script.sh if 
 
 for using checkpoint 
 ```
-finetune_checkpint_script.sh {checkpoint-number}
+finetune_checkpint_script.sh {checkpoint-number or ""} {trained_vae_path or keep blank}
 ```
 
 ### Image Generation:
