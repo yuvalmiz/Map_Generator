@@ -91,7 +91,7 @@ def filter_images(image_folder, prompt, threshold=0.22, max_iteretions=None):
 
 
 # Path to the folder containing your images
-image_folder = "./gdrive/deeplearning final project/downloaded_maps3"
+image_folder = "downloaded_maps_final"
 image_descriptions = json.load(open(f"{image_folder}/image_descriptions.json")) # enter the directory where you saved the image discriptions!!!
 # Your prompt to evaluate relevance
 prompt1 = "Map of a earth"
