@@ -58,8 +58,12 @@ Run individual scripts
 
 
 ## Google Colab Implementation
-
+Link - https://colab.research.google.com/drive/1rgDpIDz50oNGeNaAQ45ytxrta5B28yku#scrollTo=43DER0QRwngI
 This Colab notebook allows you to run everything in sequence without needing a local setup. Simply open the notebook and follow the instructions provided.
+notice that you may need to add the folder with the data to your drive or at least add a link of the folder to your google drive.
+this can be done by entering the link, click on the "deeplearning final project" title with right click. choose orgenize then add a shortcat
+
+notice that you will need to change some of the paths in the code to the relevant files
 
 ## Project Workflow
 The general workflow is as follows:
