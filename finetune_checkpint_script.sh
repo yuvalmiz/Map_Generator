@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export MODEL_NAME=CompVis/stable-diffusion-v1-4
-export TRAIN_DIR=dataset2
-export OUTPUT_DIR=output_model_full_shorter_prompts_VAE_drive
+export TRAIN_DIR=dataset
+export OUTPUT_DIR=output_model
 export train_steps=1000
 
 # Use $1 as the first argument for the checkpoint (optional)
