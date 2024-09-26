@@ -37,6 +37,8 @@ Each file in the repository serves a distinct purpose. Here's an overview of the
 - svg_to_png.py: Converts SVG files to PNG format.
 - vae_finetune.py: Fine-tunes a VAE (Variational AutoEncoder) model.
 - wikipedia_reading_maps.py: Extracts and processes data from Wikipedia, mapping it to relevant use cases.
+- link to the google cloud folder that containes models and data: https://drive.google.com/drive/folders/1zlCdTsY6wuZvNvW-LBtu64wRVWlGTEfi?usp=drive_link
+
 ## How to Use
 You can run each of the scripts locally or in Google Colab.
 
@@ -44,8 +46,8 @@ Running Locally
 Clone the repository:
 
 ```
-git clone https://github.com/your-repository.git
-cd your-repository
+git clone https://github.com/yuvalmiz/Map_Generator.git
+cd Map_Generator
 ```
 Install the dependencies:
 
@@ -59,10 +61,10 @@ Run individual scripts
 
 This Colab notebook allows you to run everything in sequence without needing a local setup. Simply open the notebook and follow the instructions provided.
 
-Project Workflow
+## Project Workflow
 The general workflow is as follows:
 
-## Dataset Preparation:
+### Dataset Preparation:
 
 - use wikipedia_reading_maps.py to collect specific category images from wikimedia (change the category inside)
 - use svg_to_png.py to convert svg files to png
@@ -70,7 +72,7 @@ The general workflow is as follows:
 - use llama_prompts.py to generate prompt for the data
 - use preparing_dataset.py to preper dataset from dowloaded images. the dataset.
 
-## Model Fine-tuning:
+### Model Fine-tuning:
 
 Fine-tune the model using finetune_script.sh or finetune_checkpint_script.sh if resuming from a checkpoint.
 
@@ -79,9 +81,9 @@ for using checkpoint
 finetune_checkpint_script.sh {checkpoint-number}
 ```
 
-## Image Generation:
+### Image Generation:
 
 Generate images with generate_image.py or generate_images_from_trained_and_pretrained.py.
-## Evaluation:
+### Evaluation:
 
 Calculate FID scores using fid_calculation.py.
